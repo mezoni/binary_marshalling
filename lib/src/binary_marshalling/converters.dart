@@ -146,30 +146,30 @@ class _StringConverter extends _Converter<String> {
     }
 
     var type = data.type;
+    BinaryType elementType;
     if (type is PointerType) {
-      type = type.type;
+      elementType = type.type;
       data = data[0];
+      if (data.isNullPtr) {
+        return null;
+      }
+    } else if (type is ArrayType) {
+      elementType = type.type;
+    } else {
+      error(type, String);
     }
 
-    if (data.isNullPtr) {
-      return null;
-    }
-
-    if (type is ArrayType) {
-      type = type.type;
-    }
-
-    if (type is! IntType) {
-      error(data.type, String);
+    if (elementType is! IntType) {
+      error(type, String);
     }
 
     var base = data.base;
     var offset = data.offset;
-    var size = type.size;
+    var size = elementType.size;
     var characters = <int>[];
     var index = 0;
     while (true) {
-      var value = type.getValue(base, offset);
+      var value = elementType.getValue(base, offset);
       if (value == 0) {
         break;
       }

@@ -1,5 +1,5 @@
 name: binary_marshalling
-version: 0.0.1
+version: 0.0.2
 author: Andrew Mezoni <andrew.mezoni@gmail.com>
 description: Binary marshalling intended to help transforming binary data to plain Dart objects.
 homepage: https://github.com/mezoni/binary_marshalling
