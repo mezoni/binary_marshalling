@@ -1,13 +1,3 @@
-binary_marshalling
-=====
-
-Binary marshalling intended to help transforming binary data to plain Dart objects.
-
-Version: 0.0.1
-
-Example:
-
-```dart
 import "package:binary_marshalling/annotations.dart";
 import "package:binary_marshalling/binary_marshalling.dart";
 import "package:binary_types/binary_types.dart";
@@ -99,5 +89,3 @@ class Foo {
 
   Foo self;
 }
-
-```

@@ -1,0 +1,12 @@
+binary_marshalling
+=====
+
+{{DESCRIPTION}}
+
+Version: {{VERSION}}
+
+Example:
+
+```dart
+{{example/example.dart}}
+```
