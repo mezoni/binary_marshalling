@@ -41,18 +41,36 @@ class BinaryUnmarshaller {
           if (declaration is VariableMirror) {
             var simpleName = declaration.simpleName;
             var name = MirrorSystem.getName(simpleName);
+            if (name.startsWith("_")) {
+              continue;
+            }
+
+            var nativeName = name;
             var memberType = declaration.type;
             var knownType = _getKnownType(memberType);
             var annotations = [];
             if (declaration.metadata != null) {
               for (var metadata in declaration.metadata) {
-                annotations.add(metadata.reflectee);
+                var object = metadata.reflectee;
+                if (object is NativeName) {
+                  nativeName = object.name;
+                  if (nativeName == null || nativeName.isEmpty) {
+                    var className = MirrorSystem.getName(typeMirror.qualifiedName);
+                    if (className.startsWith(".")) {
+                      className = className.substring(1);
+                    }
+
+                    throw new StateError("Invalid annotation 'NativeName' for '$name' in '$className'");
+                  }
+                }
+
+                annotations.add(object);
               }
             }
 
             var converter = _getConverter(knownType, memberType, annotations: annotations);
-            var member =
-                new _MemberInfo(classInfo: classInfo, converter: converter, name: name, simpleName: simpleName);
+            var member = new _MemberInfo(
+                classInfo: classInfo, converter: converter, name: name, nativeName: nativeName, simpleName: simpleName);
             members[name] = member;
           }
         }

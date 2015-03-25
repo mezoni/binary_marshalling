@@ -123,11 +123,15 @@ class _ObjectConverter<T> extends _Converter<T> {
       result = instance.reflectee;
       converted[key] = result;
       var members = classInfo.members;
+      var structMembers = binaryType.members;
       for (var key in classInfo.members.keys) {
-        var value = data[key];
         var member = members[key];
-        value = member.converter.convert(value, converted);
-        instance.setField(member.simpleName, value);
+        var nativeName = member.nativeName;
+        if (structMembers.containsKey(nativeName)) {
+          var value = data[nativeName];
+          value = member.converter.convert(value, converted);
+          instance.setField(member.simpleName, value);
+        }
       }
 
       return result;

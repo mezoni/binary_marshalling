@@ -7,9 +7,11 @@ class _MemberInfo {
 
   final String name;
 
+  final String nativeName;
+
   final Symbol simpleName;
 
-  _MemberInfo({this.classInfo, this.converter, this.name, this.simpleName});
+  _MemberInfo({this.classInfo, this.converter, this.name, this.nativeName, this.simpleName});
 
   String toString() {
     return "$classInfo $name";

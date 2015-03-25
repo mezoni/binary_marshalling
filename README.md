@@ -3,7 +3,7 @@ binary_marshalling
 
 Binary marshalling intended to help transforming binary data to plain Dart objects.
 
-Version: 0.0.2
+Version: 0.0.3
 
 Example:
 
@@ -19,6 +19,7 @@ void main() {
   helper.declare(_header);
   final data = types["FOO"].alloc(const []);
   final string = helper.allocString("Hello");
+  final user = helper.allocString("John Locke");
   var index = 0;
   for (var c in "Hey!".codeUnits) {
     data["ca"][index++].value = c;
@@ -27,6 +28,7 @@ void main() {
   data["ca"][index++].value = 0;
   data["cp"].value = string;
   data["self"].value = data;
+  data["rg_user"].value = user;
   var count = 3;
   final strings = types["char*"].array(count + 1).alloc(const []);
 
@@ -53,6 +55,7 @@ void main() {
 
   // Prints
   print("This is unmarshalled Foo:");
+  print("a      : ${foo.a}");
   print("ba     : ${foo.ba}");
   print("ca     : ${foo.ca}");
   print("cb     : ${foo.cb}");
@@ -60,6 +63,7 @@ void main() {
   print("i      : ${foo.i}");
   print("self   : ${foo.self}");
   print("strings: ${foo.strings}");
+  print("user   : ${foo.user}");
 }
 
 const String _header = '''
@@ -79,11 +83,17 @@ typedef struct foo {
   char *cp;
 
   // Ptr to null terminated array of strings
-  char **strings;  
+  char **strings;
+
+  char *rg_user;  
 } FOO;
 ''';
 
 class Foo {
+  String _magic = "41";
+
+  int a = 41;
+
   List<bool> ba;
 
   String ca;
@@ -98,6 +108,9 @@ class Foo {
   int i;
 
   Foo self;
+
+  @NativeName("rg_user")
+  String user;
 }
 
 ```
