@@ -119,6 +119,7 @@ Output:
 
 ```
 This is unmarshalled Foo:
+a      : 41
 ba     : [false, false, false]
 ca     : Hey!
 cb     : [41, 41, 41, 0, 0, 0, 0, 0, 0, 0]
@@ -126,4 +127,5 @@ cp     : Hello
 i      : 0
 self   : Instance of 'Foo'
 strings: [String 0, String 1, String 2]
+user   : John Locke
 ```
