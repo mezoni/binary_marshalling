@@ -3,7 +3,15 @@ binary_marshalling
 
 Binary marshalling intended to help transforming binary data to plain Dart objects.
 
-Version: 0.0.3
+Version: 0.0.4
+
+**Interrelated (binary) software**
+
+- [Binary declarations](https://pub.dartlang.org/packages/binary_declarations)
+- [Binary generator](https://pub.dartlang.org/packages/binary_generator)
+- [Binary interop](https://pub.dartlang.org/packages/binary_interop)
+- [Binary marshalling](https://pub.dartlang.org/packages/binary_marshalling)
+- [Binary types](https://pub.dartlang.org/packages/binary_types)
 
 Example:
 

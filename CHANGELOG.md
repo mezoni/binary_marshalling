@@ -1,3 +1,8 @@
+## 0.0.4
+
+- Added class `BinaryResources`
+- Added new annotations for use with `binary resources`
+
 ## 0.0.3
 
 - Added possibility to specify a name for the binary field in the class member declaration through the annotation `NativeName`
