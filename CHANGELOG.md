@@ -1,7 +1,6 @@
 ## 0.0.4
 
-- Added class `BinaryResources`
-- Added new annotations for use with `binary resources`
+- Added class `BinaryResources` for the work with abstract resources 
 
 ## 0.0.3
 
