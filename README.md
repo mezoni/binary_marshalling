@@ -3,7 +3,7 @@ binary_marshalling
 
 Binary marshalling intended to help transforming binary data to plain Dart objects.
 
-Version: 0.0.6
+Version: 0.0.7
 
 **Interrelated (binary) software**
 

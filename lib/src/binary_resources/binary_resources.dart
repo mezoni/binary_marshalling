@@ -5,7 +5,7 @@ class BinaryResources {
 
   static final Expando _resources = new Expando();
 
-  static BinaryData getData(Object resource) {
+  static BinaryData getResourceData(Object resource) {
     if (resource is int || resource is String || resource is bool || resource == null) {
       throw new ArgumentError.value(resource, "resource");
     }
